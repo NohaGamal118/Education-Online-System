@@ -1,0 +1,39 @@
+﻿@model List<Instructor>
+
+@{
+    ViewData["Title"] = "Instructors";
+    Layout = "_NewLayout";
+}
+<h2> Instructors </h2>
+<a href="/Instructor/Add" class="btn btn-success"> Add New Instructor </a>
+<table class="table table-bordered table-hover">
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Image</th>
+        <th>Salary</th>
+        <th>Department ID</th>
+        <th>Course ID</th>
+        <th>Edit</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Address</td>
+            <td>
+                <img src="~/Images/@item.Image" style="height:100px;" />
+            </td>
+            <td>@item.Salary</td>
+            <td>@item.DepartmentId </td>
+            <td>@item.CrsId</td>
+            <td>
+                <a href="/Instructor/Edit/@item.Id " class="btn btn-primary"> Edit </a>
+            </td>
+        </tr>
+    }
+</table>

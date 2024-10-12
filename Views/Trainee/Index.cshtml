@@ -1,0 +1,37 @@
+﻿@model List<Trainee>
+
+@{
+    ViewData["Title"] = "Trainees";
+    Layout = "_NewLayout";
+}
+<h2> Trainees </h2>
+<a href="/Trainee/Add" class="btn btn-success"> Add New Trainee </a>
+<table class="table table-bordered table-hover">
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Image</th>
+        <th>Grade</th>
+        <th>Department ID</th>
+        <th>Edit</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Address</td>
+            <td>
+                <img src="~/Images/@item.Image" style="height:100px;" />
+            </td>
+            <td>@item.Grade</td>
+            <td>@item.DepartmentId</td>
+            <td>
+                <a href="/Trainee/Edit/@item.Id " class="btn btn-primary"> Edit </a>
+            </td>
+        </tr>
+    }
+</table>

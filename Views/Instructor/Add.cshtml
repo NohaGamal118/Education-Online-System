@@ -1,0 +1,49 @@
+﻿@model Instructor
+@{
+    Layout = "_AddandEditLayout";
+    var deptss = ViewBag.depts;
+    SelectList deptsList = new SelectList(deptss, "Id", "Name");
+    var courses = ViewBag.courses;
+    SelectList CrsList = new SelectList(courses, "Id", "Name");
+}
+
+<h2>Add New Instructor</h2>
+<form method="post" asp-action="Add" asp-controller="Instructor">
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Address"></label>
+        <input asp-for="Address" class="form-control" />
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Image"></label>
+        <input asp-for="Image" type="file" class="form-control" />
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Salary"></label>
+        <input asp-for="Salary" type="number" class="form-control" />
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="DepartmentId"></label>
+        <select asp-for="DepartmentId" asp-items="deptsList" class="form-control">
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="CrsId"></label>
+        <select asp-for="CrsId" asp-items="CrsList" class="form-control">
+        </select>
+        
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+</form>

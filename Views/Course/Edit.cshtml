@@ -1,0 +1,38 @@
+﻿
+@model Course
+
+@{
+    Layout = "_AddandEditLayout";
+    var depts = ViewBag.depts;
+    SelectList deptsList = new SelectList(depts, "Id", "Name");
+}
+
+<h2>Edit</h2>
+
+<form method="post" asp-action="Edit" asp-controller="Course" asp-route-id="@Model?.Id" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Degree"></label>
+        <input asp-for="Degree" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MinDegree"></label>
+        <input asp-for="MinDegree" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DepartmentId"></label>
+        <select asp-for="DepartmentId" asp-items="deptsList" class="form-control">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+</form>

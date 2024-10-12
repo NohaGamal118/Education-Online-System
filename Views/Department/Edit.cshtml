@@ -1,0 +1,25 @@
+﻿@model Department
+
+@{
+    Layout = "_AddandEditLayout";
+    
+}
+
+<h2>Edit</h2>
+
+<form method="post" asp-action="Edit" asp-controller="Department" asp-route-id="@Model?.Id" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Manager">Manger Name</label>
+        <input asp-for="Manager" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+</form>

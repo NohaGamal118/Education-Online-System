@@ -1,0 +1,59 @@
+﻿@model Instructor
+
+@{
+    Layout = "_AddandEditLayout";
+    var depts = ViewBag.depts; 
+    SelectList deptsList = new SelectList(depts, "Id", "Name");
+    var courses = ViewBag.courses;
+    SelectList CrsList = new SelectList(courses, "Id", "Name");
+}
+
+<h2>Edit</h2>
+
+<form method="post" asp-action="Edit" asp-controller="Instructor" asp-route-id="@Model?.Id" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Address"></label>
+        <input asp-for="Address" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Current Image:</label>
+        <br />
+        @if (!string.IsNullOrEmpty(Model.Image))
+        {
+            <img src="@Url.Content("~/images/" + Model.Image)" width="100" />
+        }
+    </div>
+
+    <div class="form-group">
+        <label>New Image:</label>
+        <input asp-for="Image" type="file" name="ImageFile" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Salary"></label>
+        <input asp-for="Salary" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DepartmentId"></label>
+        <select asp-for="DepartmentId" asp-items="deptsList" class="form-control">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CrsId"></label>
+        <select asp-for="CrsId" asp-items="CrsList" class="form-control">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+</form>

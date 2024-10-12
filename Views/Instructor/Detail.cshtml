@@ -1,0 +1,26 @@
+﻿@model Instructor
+@{
+    Layout = "_AddandEditLayout";
+}
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Image</th>
+        <th>Salary</th>
+        <th>Department ID</th>
+        <th>Course ID</th>
+    </tr>
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.Name</td>
+        <td>@Model.Address</td>
+        <td>
+            <img src="~/Images/@Model.Image" style="height:100px;" />
+        </td>
+        <td>@Model.Salary</td>
+        <td>@Model.DepartmentId</td>
+        <td>@Model.CrsId</td>
+    </tr>
+</table>
